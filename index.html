@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فن کا تحفہ - بچوں کی ڈرائنگ بک</title>
+    <meta name="description" content="فن کا تحفہ - بچوں کے لیے ایک خوبصورت ڈرائنگ بک جو تخلیقی صلاحیتوں کو فروغ دیتی ہے">
+    <meta name="keywords" content="بچوں کی کتاب, ڈرائنگ, فن, تخلیقی صلاحیت, اردو کتاب">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts - Noto Nastaliq Urdu -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library - Load only on desktop -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="(min-width: 768px)">
+    
+    <style>
+        /* Premium Cream Theme - Color Variables */
+        :root {
+            /* Primary Background Colors */
+            --cream-primary: #FFF9F0;      /* Main cream background */
+            --cream-secondary: #F5E6D3;    /* Light beige for sections */
+            --cream-accent: #EBD5B3;       /* Pale gold for highlights */
+            
+            /* Accent Colors */
+            --terracotta: #D97742;         /* Rich terracotta for buttons */
+            --coral: #FF6F61;              /* Warm coral for highlights */
+            --coral-light: #FF8A80;        /* Lighter coral for hover */
+            
+            /* Text Colors */
+            --charcoal: #333333;           /* Deep charcoal for headings */
+            --warm-brown: #5C4033;         /* Warm brown for body text */
+            --text-muted: #8B7355;         /* Muted text color */
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--terracotta) 0%, var(--coral) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--cream-accent) 0%, var(--cream-secondary) 100%);
+            --gradient-hover: linear-gradient(135deg, var(--coral-light) 0%, var(--terracotta) 100%);
+            
+            /* Shadows */
+            --shadow-soft: 0 4px 20px rgba(92, 64, 51, 0.08);
+            --shadow-medium: 0 8px 30px rgba(92, 64, 51, 0.12);
+            --shadow-strong: 0 15px 40px rgba(92, 64, 51, 0.15);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            line-height: 1.7;
+            color: var(--warm-brown);
+            background: var(--cream-primary);
+            overflow-x: hidden;
+            /* Simplified cursor for mobile performance */
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Allow text selection on interactive elements */
+        .btn, .btn-premium, .nav-link, .form-control, textarea, input, a, button {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+            cursor: pointer;
+        }
+
+        /* Language toggle button */
+        .language-toggle {
+            position: fixed;
+            bottom: 120px;
+            right: 20px;
+            z-index: 9999;
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--coral) 100%);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        /* Responsive positioning for mobile - Optimized */
+        @media (max-width: 768px) {
+            .language-toggle {
+                bottom: 110px;
+                right: 15px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.1rem;
+                /* Reduce shadow complexity on mobile */
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            }
+            
+            /* Optimize body for mobile */
+            body {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            /* Reduce animation complexity on mobile */
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+            
+            /* Optimize images for mobile */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Extra small devices optimization */
+        @media (max-width: 576px) {
+            body {
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            
+            .language-toggle {
+                bottom: 100px;
+                right: 10px;
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+
+        .language-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .language-toggle i {
+            margin-right: 0.5rem;
+        }
+
+        /* Hide elements based on language */
+        .urdu-only {
+            display: block;
+        }
+
+        .english-only {
+            display: none;
+        }
+
+        .lang-english .urdu-only {
+            display: none;
+        }
+
+        .lang-english .english-only {
+            display: block;
+        }
+
+        /* Keep original layout in both languages */
+        .author-qualifications-sidebar {
+            order: 2;
+        }
+
+        .text-center.flex-grow-1 {
+            order: 1;
+        }
+
+        /* Ensure author image maintains original size and position */
+        .text-center.flex-grow-1 img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Maintain consistent layout */
+        .d-flex.align-items-start.gap-4 {
+            flex-wrap: nowrap;
+            align-items: flex-start;
+        }
+
+        .author-qualifications-sidebar {
+            flex: 0 0 auto;
+            width: 300px;
+        }
+
+        .text-center.flex-grow-1 {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* RTL Support */
+        .rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Smooth Scrolling - Disable on mobile for performance */
+        @media (min-width: 769px) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+
+        /* Simplified Background Pattern for mobile */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(217, 119, 66, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(235, 213, 179, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Mobile optimization for background */
+        @media (max-width: 768px) {
+            body::before {
+                background-image: none;
+                background-color: var(--cream-primary);
+            }
+            
+            /* Optimize transitions and animations for mobile */
+            .btn, .btn-premium, .nav-link, .social-float a, .back-to-top {
+                transition: none !important;
+            }
+            
+            /* Reduce shadow complexity on mobile */
+            .btn, .btn-premium, .nav-link, .social-float a, .back-to-top {
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+            }
+            
+            /* Optimize form elements for mobile */
+            .form-control, .form-select {
+                font-size: 16px; /* Prevents zoom on iOS */
+                padding: 0.75rem;
+            }
+            
+            /* Optimize images for mobile */
+            .gallery-item img, .book-image {
+                will-change: auto;
+                transform: none !important;
+            }
+            
+                    /* Author qualifications mobile optimization */
+        .d-flex.align-items-start.gap-4 {
+            flex-direction: column !important;
+            gap: 2rem !important;
+        }
+        
+        .author-qualifications-sidebar {
+            order: 1 !important;
+            width: 100% !important;
+            min-width: auto !important;
+            padding: 1.5rem !important;
+        }
+        
+        .text-center.flex-grow-1 {
+            order: 2 !important;
+            flex: none !important;
+            width: 100% !important;
+        }
+        
+        .text-center.flex-grow-1 img {
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        
+        /* Qualification items mobile optimization */
+        .qualification-item {
+            padding: 0.75rem 0 !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+        }
+        
+        .isbn-box {
+            padding: 0.75rem 1rem !important;
+            margin-top: 1rem !important;
+            font-size: 14px !important;
+        }
+        
+        /* Author section title mobile optimization */
+        .author-qualifications-sidebar h4 {
+            font-size: 1.25rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+        }
+        
+        /* Extra small devices - Further optimization */
+        @media (max-width: 576px) {
+            /* Reduce padding and margins for small screens */
+            .container, .container-fluid {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            /* Optimize buttons for touch */
+            .btn, .btn-premium {
+                padding: 0.75rem 1.25rem;
+                font-size: 14px;
+                min-height: 44px; /* Touch-friendly size */
+            }
+            
+            /* Optimize navigation for mobile */
+            .navbar-nav .nav-link {
+                padding: 0.75rem 1rem;
+                font-size: 16px;
+            }
+            
+                    /* Author qualifications extra small device optimization */
+        .author-qualifications-sidebar {
+            padding: 1rem !important;
+        }
+        
+        .qualification-item {
+            padding: 0.5rem 0 !important;
+            font-size: 13px !important;
+            line-height: 1.4 !important;
+        }
+        
+        .isbn-box {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 13px !important;
+        }
+        
+        .text-center.flex-grow-1 img {
+            border-radius: 10px !important;
+        }
+        
+        /* Ensure proper spacing on very small screens */
+        .author-qualifications-sidebar h4 {
+            font-size: 1.1rem !important;
+            margin-bottom: 1rem !important;
+        }
+        }
+        
+        /* Mobile optimized class for additional performance */
+        .mobile-optimized {
+            /* Disable all animations and transitions */
+            * {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+            
+            /* Optimize scrolling */
+            html, body {
+                scroll-behavior: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Reduce shadow complexity */
+            .btn, .btn-premium, .nav-link, .social-float a, .back-to-top, .premium-card {
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+            }
+            
+            /* Optimize images */
+            img {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+            
+            /* Author section mobile optimization */
+            .author-qualifications-sidebar {
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+            }
+            
+            .author-qualifications-sidebar:hover {
+                transform: none !important;
+            }
+        }
+        
+        /* Tablet optimization for author section */
+        @media (max-width: 991px) and (min-width: 769px) {
+            .d-flex.align-items-start.gap-4 {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .author-qualifications-sidebar {
+                order: 1;
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .text-center.flex-grow-1 {
+                order: 2;
+                flex: none;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .text-center.flex-grow-1 img {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        /* Header Styles */
+        .navbar {
+            background: rgba(255, 249, 240, 0.95) !important;
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            border-bottom: 1px solid rgba(235, 213, 179, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--terracotta) !important;
+            text-shadow: 1px 1px 2px rgba(92, 64, 51, 0.1);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--charcoal) !important;
+            font-weight: 500;
+            margin: 0 0.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--terracotta) !important;
+            background: rgba(235, 213, 179, 0.3);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 140px 0 100px;
+            background: linear-gradient(135deg, var(--cream-primary) 0%, var(--cream-secondary) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(217, 119, 66, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(235, 213, 179, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(92, 64, 51, 0.1);
+        }
+
+        .hero-text .subtitle {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--warm-brown);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* Premium Button Styles */
+        .btn-premium {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-medium);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-hover);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+            color: white;
+        }
+
+        .btn-premium:hover::before {
+            left: 0;
+        }
+
+        .btn-premium.btn-lg {
+            padding: 1.5rem 4rem;
+            font-size: 1.4rem;
+        }
+
+        /* Book Cover Styles */
+        .book-cover {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-strong);
+            transition: all 0.4s ease;
+            border: 3px solid rgba(235, 213, 179, 0.3);
+        }
+
+        .book-cover:hover {
+            transform: scale(1.03) rotate(1deg);
+            box-shadow: 0 25px 50px rgba(92, 64, 51, 0.2);
+        }
+
+
+
+        /* Section Styles */
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+            text-shadow: 1px 1px 2px rgba(92, 64, 51, 0.1);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+            opacity: 0;
+        }
+
+        /* Premium Card Styles */
+        .premium-card {
+            background: var(--cream-primary);
+            border-radius: 25px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(235, 213, 179, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(217, 119, 66, 0.2);
+        }
+
+        .premium-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            color: var(--terracotta);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(92, 64, 51, 0.1);
+        }
+
+        /* Gallery Styles */
+        .gallery-item {
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            border: 3px solid rgba(235, 213, 179, 0.2);
+            position: relative;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(217, 119, 66, 0.1), rgba(255, 111, 97, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(217, 119, 66, 0.3);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        /* Buy Section */
+        .buy-section {
+            background: var(--gradient-secondary);
+            color: var(--charcoal);
+            position: relative;
+            border-top: 5px solid var(--terracotta);
+            border-bottom: 5px solid var(--terracotta);
+        }
+
+        .buy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23D97742" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .buy-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .buy-title {
+            color: var(--charcoal);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(92, 64, 51, 0.1);
+        }
+
+        .buy-description {
+            color: var(--warm-brown);
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        .qr-code {
+            width: 160px;
+            height: 160px;
+            background: var(--cream-primary);
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: var(--shadow-medium);
+            margin: 0 auto;
+            border: 3px solid rgba(217, 119, 66, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--charcoal) 0%, #2c2c2c 100%);
+            color: var(--cream-primary);
+            padding: 4rem 0 2rem;
+            border-top: 5px solid var(--terracotta);
+        }
+
+        .footer h3 {
+            color: var(--coral);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer a {
+            color: var(--cream-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            line-height: 2;
+        }
+
+        .footer a:hover {
+            color: var(--coral);
+        }
+
+        /* Contact Information - Left to Right Display */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-text {
+            direction: ltr !important;
+            text-align: left !important;
+            unicode-bidi: bidi-override;
+        }
+
+        /* Social Media Floating Icons */
+        .social-float {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .social-float a {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .social-float .instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-float .whatsapp {
+            background: #25d366;
+        }
+
+        .social-float a:hover {
+            transform: scale(1.1) translateX(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.4s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+            color: white;
+        }
+
+        /* Section Backgrounds */
+        .section-cream {
+            background: var(--cream-primary);
+        }
+
+        .section-beige {
+            background: var(--cream-secondary);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .social-float {
+                right: 15px;
+                gap: 0.8rem;
+            }
+
+            .social-float a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .back-to-top {
+                bottom: 25px;
+                right: 25px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* Custom Bootstrap Overrides */
+        .container {
+            max-width: 1200px;
+        }
+
+        .row {
+            margin: 0;
+        }
+
+        .col, .col-md-6, .col-lg-4, .col-lg-6 {
+            padding: 0 20px;
+        }
+
+        /* Animation Classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Author Qualifications Styling */
+        .author-qualifications-sidebar {
+            background: var(--cream-secondary);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid rgba(235, 213, 179, 0.3);
+            box-shadow: var(--shadow-soft);
+            min-width: 280px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .author-qualifications-sidebar:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .qualification-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(235, 213, 179, 0.3);
+            line-height: 1.6;
+        }
+
+        .qualification-item:last-child {
+            border-bottom: none;
+        }
+        
+        .qualification-item strong {
+            color: var(--terracotta);
+            font-weight: 600;
+        }
+
+        .isbn-box {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Order Form Styles - Modern Design */
+        .order-form-container {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .order-form .form-label {
+            color: var(--charcoal);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .order-form .form-control {
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 1rem 1.25rem;
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .order-form .form-control:focus {
+            background: white;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 0.25rem rgba(217, 119, 66, 0.1);
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        .order-form .form-control::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+
+        .order-form textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-note {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 1.75rem;
+            border: 1px solid #dee2e6;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .form-note::before {
+            content: 'ℹ️';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .form-note p {
+            color: var(--charcoal);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        .order-form .btn-premium {
+            margin-top: 1.5rem;
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(217, 119, 66, 0.3);
+            min-width: 200px;
+        }
+
+        .order-form .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(217, 119, 66, 0.4);
+        }
+
+        /* Fix form input direction to left-to-right */
+        .order-form input,
+        .order-form textarea,
+        .order-form select {
+            direction: ltr !important;
+            text-align: left !important;
+        }
+
+        .order-form .form-label {
+            direction: ltr !important;
+            text-align: left !important;
+        }
+
+        /* Book Preview Styles */
+        .book-preview-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .book-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px; /* Adjust height as needed */
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-in-out;
+            box-shadow: var(--shadow-strong);
+            border: 3px solid rgba(235, 213, 179, 0.3);
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .book-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--terracotta);
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: var(--shadow-medium);
+            transition: background 0.3s ease;
+        }
+
+        .book-nav:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .book-nav-prev {
+            left: -30px;
+        }
+
+        .book-nav-next {
+            right: -30px;
+        }
+
+        .book-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-origin: left center;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .book {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-in-out;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transform-origin: left center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .book-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .book-page.front {
+            z-index: 1;
+            transform: rotateY(0deg);
+        }
+
+        .book-page.back {
+            z-index: 0;
+            transform: rotateY(180deg);
+        }
+
+        .page-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .page-indicator-dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(235, 213, 179, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .page-indicator-dot.active {
+            background: var(--terracotta);
+        }
+
+        /* Responsive adjustments for book preview */
+        @media (max-width: 992px) {
+            .book-preview-container {
+                max-width: 90%;
+            }
+            .book-wrapper {
+                height: 400px;
+            }
+            .book-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .book-nav-prev {
+                left: -20px;
+            }
+            .book-nav-next {
+                right: -20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .book-preview-container {
+                max-width: 95%;
+            }
+            .book-wrapper {
+                height: 350px;
+            }
+            .book-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .book-nav-prev {
+                left: -15px;
+            }
+            .book-nav-next {
+                right: -15px;
+            }
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Language Toggle Button -->
+    <button class="language-toggle" onclick="toggleLanguage()" title="Toggle Language">
+        <i class="fas fa-language"></i>
+    </button>
+
+    <!-- Social Media Floating Icons -->
+    <div class="social-float">
+        <!-- Replace with your Instagram profile link -->
+        <a href="https://www.instagram.com/mubashir.o_0?igsh=MWp1dXI5YWljMGtwYg==" target="_blank" class="instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <!-- Replace 923001234567 with your actual WhatsApp number -->
+        <a href="https://wa.me/919545959797?text=فن کا تحفہ کتاب کے بارے میں معلومات چاہیے" target="_blank" class="whatsapp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <span class="urdu-only">فن کا تحفہ</span>
+                <span class="english-only">Gift of Art</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">
+                            <span class="urdu-only">ہوم</span>
+                            <span class="english-only">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            <span class="urdu-only">کتاب کے بارے میں</span>
+                            <span class="english-only">About Book</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">
+                            <span class="urdu-only">خصوصیات</span>
+                            <span class="english-only">Features</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#benefits">
+                            <span class="urdu-only">فوائد</span>
+                            <span class="english-only">Benefits</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">
+                            <span class="urdu-only">گیلری</span>
+                            <span class="english-only">Gallery</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#buy">
+                            <span class="urdu-only">خریدیں</span>
+                            <span class="english-only">Buy Now</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="hero-text">
+                        <h1>
+                            <span class="urdu-only">فن کا تحفہ</span>
+                            <span class="english-only">Gift of Art</span>
+                        </h1>
+                        <div class="subtitle">
+                            <span class="urdu-only">بچوں کی تخلیقی صلاحیتوں کو فروغ دینے والی ڈرائنگ بک</span>
+                            <span class="english-only">A Drawing Book to Develop Children's Creative Skills</span>
+                        </div>
+                        <p>
+                            <span class="urdu-only">یہ کتاب بچوں کو رنگوں کی دنیا میں لے جاتی ہے اور ان کی تخلیقی صلاحیتوں کو بیدار کرتی ہے۔ ہر صفحہ ایک نیا ماجرا ہے جو بچوں کو سیکھنے اور کھیلنے دونوں کا موقع دیتا ہے۔</span>
+                            <span class="english-only">This book takes children into the world of colors and awakens their creative abilities. Every page is a new adventure that gives children the opportunity to both learn and play.</span>
+                        </p>
+                        <a href="#buy" class="btn-premium btn-lg">
+                            <span class="urdu-only">کتاب خریدیں</span>
+                            <span class="english-only">Buy Book</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+                    <div class="text-center">
+                        <!-- Replace with your actual book cover image -->
+                        <img src="cover-img.png" alt="فن کا تحفہ - کتاب کا کور" class="book-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 section-beige">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="urdu-only">کتاب کے بارے میں</span>
+                <span class="english-only">About the Book</span>
+            </h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-text">
+                        <p>
+                            <span class="urdu-only">فن کا تحفہ ایک منفرد ڈرائنگ بک ہے جو بچوں کی تخلیقی صلاحیتوں کو فروغ دینے کے لیے بنائی گئی ہے۔ اس کتاب میں رنگوں کی دنیا، مختلف شکلیں، اور دلچسپ مشقیں شامل ہیں جو بچوں کو فن کی طرف راغب کرتی ہیں۔</span>
+                            <span class="english-only">"Gift of Art" is a unique drawing book designed to develop children's creative abilities. This book includes the world of colors, various shapes, and interesting exercises that attract children to art.</span>
+                        </p>
+                        <p>
+                            <span class="urdu-only">ہر صفحہ ایک نیا چیلنج ہے جو بچوں کو سوچنے، تخلیق کرنے اور سیکھنے میں مدد کرتا ہے۔ یہ کتاب نہ صرف تفریح فراہم کرتی ہے بلکہ بچوں کی ذہنی نشوونما میں بھی اہم کردار ادا کرتی ہے۔</span>
+                            <span class="english-only">Every page is a new challenge that helps children think, create, and learn. This book not only provides entertainment but also plays an important role in children's mental development.</span>
+                        </p>
+                        <p>
+                            <span class="urdu-only">مصنف نے سالوں کے تجربے کے بعد یہ کتاب تیار کی ہے تاکہ ہر بچہ اپنی تخلیقی صلاحیتوں کو دریافت کر سکے۔</span>
+                            <span class="english-only">The author has prepared this book after years of experience so that every child can discover their creative abilities.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="d-flex align-items-start gap-4">
+                        <div class="author-qualifications-sidebar">
+                            <h4 class="text-primary mb-4">
+                                <span class="urdu-only">مصنف کی تعلیمی قابلیتیں</span>
+                                <span class="english-only">Author's Educational Qualifications</span>
+                            </h4>
+                            <div class="qualification-item">
+                                <strong>D.Ed</strong> - Diploma in Education
+                            </div>
+                            <div class="qualification-item">
+                                <strong>B.Ed</strong> - Bachelor of Education
+                            </div>
+                            <div class="qualification-item">
+                                <strong>M.A (Urdu)</strong> - Master of Arts in Urdu
+                            </div>
+                            <div class="qualification-item">
+                                <strong>A.T.D</strong> - Art Teacher Diploma
+                            </div>
+                            <div class="qualification-item">
+                                <strong>A.M</strong> - Art Master
+                            </div>
+                            <div class="qualification-item">
+                                <strong>C.T.C</strong> - Craft Teacher Certificate
+                            </div>
+                            <div class="qualification-item">
+                                <strong>Montessori</strong> - Montessori Training
+                            </div>
+                            <div class="isbn-box">
+                                <strong>ISBN:</strong>978-81-958129-67
+                            </div>
+                        </div>
+                        <div class="text-center flex-grow-1">
+                            <!-- Replace with author's image -->
+                            <img src="author.jpg" alt="مصنف کی تصویر" class="book-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 section-cream">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="urdu-only">خصوصیات</span>
+                <span class="english-only">Features</span>
+            </h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card premium-card h-100 text-center p-4">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">رنگوں کی دنیا</span>
+                                <span class="english-only">World of Colors</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">ہر صفحہ مختلف رنگوں اور شکلوں سے بھرا ہوا ہے جو بچوں کی توجہ مرکوز کرتا ہے۔</span>
+                                <span class="english-only">Every page is filled with different colors and shapes that capture children's attention.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card premium-card h-100 text-center p-4">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">تخلیقی سوچ</span>
+                                <span class="english-only">Creative Thinking</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">مشقیں بچوں کو تخلیقی سوچ کی طرف راغب کرتی ہیں اور ان کی ذہنی صلاحیتوں کو بڑھاتی ہیں۔</span>
+                                <span class="english-only">Exercises attract children to creative thinking and enhance their mental abilities.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card premium-card h-100 text-center p-4">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">تفریحی سیکھنا</span>
+                                <span class="english-only">Fun Learning</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">ہر مشق تفریحی طریقے سے سیکھنے کا موقع فراہم کرتی ہے۔</span>
+                                <span class="english-only">Every exercise provides an opportunity to learn in a fun way.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card premium-card h-100 text-center p-4">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">اعلیٰ معیار</span>
+                                <span class="english-only">High Quality</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">اعلیٰ معیار کے کاغذ اور رنگوں کا استعمال کیا گیا ہے۔</span>
+                                <span class="english-only">High-quality paper and colors have been used.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-5 section-beige">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="urdu-only">دیگر فیچرز اور فوائد</span>
+                <span class="english-only">Additional Features & Benefits</span>
+            </h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card premium-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">ذہنی نشوونما</span>
+                                <span class="english-only">Mental Development</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">بچوں کی ذہنی نشوونما میں مدد کرتا ہے اور ان کی سوچنے کی صلاحیت کو بڑھاتا ہے۔</span>
+                                <span class="english-only">Helps in children's mental development and enhances their thinking ability.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card premium-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">ہاتھوں کی مہارت</span>
+                                <span class="english-only">Hand Skills</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">ہاتھوں کی مہارت بڑھانے میں معاون ہے اور بچوں کی حرکتی صلاحیتوں کو فروغ دیتا ہے۔</span>
+                                <span class="english-only">Helps in developing hand skills and promotes children's motor abilities.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card premium-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">آنکھوں کی توجہ</span>
+                                <span class="english-only">Eye Focus</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">آنکھوں کی توجہ مرکوز کرنے کی صلاحیت کو بڑھاتا ہے اور بصری ادراک کو فروغ دیتا ہے۔</span>
+                                <span class="english-only">Increases the ability to focus eyes and promotes visual perception.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card premium-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">خاندانی وقت</span>
+                                <span class="english-only">Family Time</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">"خاندان کے ساتھ وقت گزارنے کا موقع فراہم کرتا ہے"</span>
+                                <span class="english-only">"Provides an opportunity to spend time with family"</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card premium-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">تعلیمی بنیاد</span>
+                                <span class="english-only">Educational Foundation</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">تعلیمی بنیادوں کی مضبوطی میں مدد کرتا ہے اور سیکھنے کی صلاحیت کو بڑھاتا ہے۔</span>
+                                <span class="english-only">Helps strengthen educational foundations and increases learning ability.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card premium-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="card-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h5 class="card-title">
+                                <span class="urdu-only">خوشی کا احساس</span>
+                                <span class="english-only">Feeling of Joy</span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="urdu-only">خوشی اور اطمینان کا احساس فراہم کرتا ہے اور بچوں کی شخصیت کو مثبت بناتا ہے۔</span>
+                                <span class="english-only">Provides a feeling of happiness and satisfaction and makes children's personality positive.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 section-cream">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="urdu-only">گیلری</span>
+                <span class="english-only">Gallery</span>
+            </h2>
+            <div class="row g-4">
+                <!-- Replace these placeholder images with actual book pages -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-item">
+                        <img src="gallery-img1.jpg" alt="کتاب کا صفحہ 1" class="gallery-image">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-item">
+                        <img src="gallery-img2.jpg" alt="کتاب کا صفحہ 2" class="gallery-image">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-item">
+                        <img src="gallery-img3.jpg" alt="کتاب کا صفحہ 3" class="gallery-image">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="gallery-item">
+                        <img src="gallery-img4.jpg" alt="کتاب کا صفحہ 4" class="gallery-image">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="gallery-item">
+                        <img src="gallery-img5.jpg" alt="کتاب کا صفحہ 5" class="gallery-image">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="gallery-item">
+                        <img src="gallery-img6.jpg" alt="کتاب کا صفحہ 6" class="gallery-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Section -->
+    <section id="buy" class="buy-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="buy-content">
+                        <h2 class="buy-title mb-4" data-aos="fade-up">
+                            <span class="urdu-only">ابھی آرڈر کریں</span>
+                            <span class="english-only">Order Now</span>
+                        </h2>
+                        <p class="buy-description mb-5" data-aos="fade-up" data-aos-delay="200">
+                            <span class="urdu-only">اپنے بچے کو یہ خوبصورت تحفہ دیں اور ان کی تخلیقی صلاحیتوں کو بیدار کریں</span>
+                            <span class="english-only">Give this beautiful gift to your child and awaken their creative abilities</span>
+                        </p>
+                        
+                        <div class="order-form-container" data-aos="fade-up" data-aos-delay="300">
+                            <form class="order-form" id="orderForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="fullName" class="form-label">
+                                            <span class="urdu-only">پورا نام *</span>
+                                            <span class="english-only">Full Name *</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="fullName" name="fullName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">
+                                            <span class="urdu-only">ای میل ایڈریس *</span>
+                                            <span class="english-only">Email Address *</span>
+                                        </label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label">
+                                            <span class="urdu-only">فون نمبر *</span>
+                                            <span class="english-only">Phone Number *</span>
+                                        </label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" 
+                                               pattern="[0-9]{10}" 
+                                               placeholder="Enter 10 digit number"
+                                               title="Please enter a valid 10-digit Indian phone number"
+                                               required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="address" class="form-label">
+                                            <span class="urdu-only">پتہ *</span>
+                                            <span class="english-only">Home Address *</span>
+                                        </label>
+                                        <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="quantity" class="form-label">
+                                            <span class="urdu-only">کتابوں کی تعداد *</span>
+                                            <span class="english-only">Quantity of Books *</span>
+                                        </label>
+                                        <input type="number" class="form-control" id="quantity" name="quantity" 
+                                               min="1" max="100" 
+                                               placeholder="Enter quantity (1-100)"
+                                               required>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-note">
+                                            <p>
+                                                <strong>
+                                                    <span class="urdu-only">نوٹ:</span>
+                                                    <span class="english-only">Note:</span>
+                                                </strong> 
+                                                <span class="urdu-only">ہم آپ کے آرڈر کی تصدیق کے لیے آپ سے رابطہ کریں گے۔ اگر آپ اورنگ آباد سے باہر ہیں تو اضافی کوریئر چارجز لاگو ہوں گے۔</span>
+                                                <span class="english-only">We will contact you to confirm your order. If you are located outside Aurangabad, additional courier charges will apply.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn-premium btn-lg">
+                                            <span class="urdu-only">آرڈر جمع کریں</span>
+                                            <span class="english-only">Submit Order</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                                    <div class="col-lg-4">
+                        <h3>
+                            <span class="urdu-only">رابطہ کریں</span>
+                            <span class="english-only">Contact Us</span>
+                        </h3>
+                        <p class="contact-item"><i class="fas fa-phone me-2"></i><span class="contact-text">+91 9545959797</span></p>
+                        <p class="contact-item"><i class="fas fa-phone me-2"></i><span class="contact-text">+91 9823786113</span></p>
+                        <p class="contact-item"><i class="fas fa-phone me-2"></i><span class="contact-text">+91 9823786144</span></p>
+                        <p class="contact-item"><i class="fas fa-phone me-2"></i><span class="contact-text">+91 9762714347</span></p>
+                        <p class="contact-item"><i class="fas fa-envelope me-2"></i><span class="contact-text">mubashir9823king@gmail.com</span></p>
+                        <p class="contact-item"><i class="fas fa-map-marker-alt me-2"></i><span class="contact-text">Aurangabad, Maharashtra, India</span></p>
+                    </div>
+                <div class="col-lg-4">
+                    <h3>
+                        <span class="urdu-only">فوری لنکس</span>
+                        <span class="english-only">Quick Links</span>
+                    </h3>
+                    <p><a href="#about"><i class="fas fa-arrow-left me-2"></i>
+                        <span class="urdu-only">کتاب کے بارے میں</span>
+                        <span class="english-only">About Book</span>
+                    </a></p>
+                    <p><a href="#features"><i class="fas fa-arrow-left me-2"></i>
+                        <span class="urdu-only">خصوصیات</span>
+                        <span class="english-only">Features</span>
+                    </a></p>
+                    <p><a href="#gallery"><i class="fas fa-arrow-left me-2"></i>
+                        <span class="urdu-only">گیلری</span>
+                        <span class="english-only">Gallery</span>
+                    </a></p>
+                </div>
+                <div class="col-lg-4">
+                    <h3>
+                        <span class="urdu-only">سوشل میڈیا</span>
+                        <span class="english-only">Social Media</span>
+                    </h3>
+                    <p><a href="https://www.instagram.com/mubashir.o_0?igsh=MWp1dXI5YWljMGtwYg==" target="_blank"><i class="fab fa-facebook me-2"></i>
+                        <span class="urdu-only">فیس بک</span>
+                        <span class="english-only">Facebook</span>
+                    </a></p>
+                    <p><a href="https://www.instagram.com/mubashir.o_0?igsh=MWp1dXI5YWljMGtwYg==" target="_blank"><i class="fab fa-instagram me-2"></i>
+                        <span class="urdu-only">انسٹاگرام</span>
+                        <span class="english-only">Instagram</span>
+                    </a></p>
+                    <p><a href="https://wa.me/919545959797?text=فن کا تحفہ کتاب کے بارے میں معلومات چاہیے" target="_blank"><i class="fab fa-whatsapp me-2"></i>
+                        <span class="urdu-only">واٹس ایپ</span>
+                        <span class="english-only">WhatsApp</span>
+                    </a></p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="text-center border-top pt-4" style="border-color: rgba(235, 213, 179, 0.3) !important;">
+                        <p>&copy; 2025 
+                            <span class="urdu-only">فن کا تحفہ۔ تمام حقوق محفوظ ہیں۔</span>
+                            <span class="english-only">Gift of Art. All rights reserved.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS animations only on desktop for better mobile performance
+        if (window.innerWidth >= 768) {
+            // Load AOS only when needed
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800, // Reduced duration for better performance
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    offset: 100, // Reduced offset
+                    delay: 0
+                });
+            }
+        }
+
+        // Smooth scrolling for navigation links - Disabled on mobile for performance
+        if (window.innerWidth >= 768) {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Header scroll effect with premium styling - Optimized for mobile
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            // Throttle scroll events for better mobile performance
+            if (scrollTimeout) return;
+            
+            scrollTimeout = setTimeout(() => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 100) {
+                    navbar.style.background = 'rgba(255, 249, 240, 0.98)';
+                    navbar.style.boxShadow = '0 4px 25px rgba(92, 64, 51, 0.12)';
+                } else {
+                    navbar.style.background = 'rgba(255, 249, 240, 0.95)';
+                    navbar.style.boxShadow = '0 4px 20px rgba(92, 64, 51, 0.08)';
+                }
+                scrollTimeout = null;
+            }, 16); // 60fps throttling
+        });
+
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        
+        // Show/hide button based on scroll - Optimized for mobile
+        let backToTopTimeout;
+        window.addEventListener('scroll', function() {
+            if (backToTopTimeout) return;
+            
+            backToTopTimeout = setTimeout(() => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+                backToTopTimeout = null;
+            }, 100); // Reduced frequency for mobile
+        });
+
+        // Smooth scroll to top when button is clicked - Disabled on mobile
+        backToTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.innerWidth >= 768) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                window.scrollTo(0, 0); // Instant scroll on mobile
+            }
+        });
+
+        // Order Form Handling with Indian phone validation
+        const orderForm = document.getElementById('orderForm');
+        const phoneInput = document.getElementById('phone');
+        
+        // Indian phone number validation
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+            if (value.length > 10) {
+                value = value.slice(0, 10); // Limit to 10 digits
+            }
+            e.target.value = value;
+        });
+        
+        // Phone number format validation
+        phoneInput.addEventListener('blur', function(e) {
+            const phone = e.target.value;
+            const phoneRegex = /^[6-9]\d{9}$/; // Indian mobile number pattern
+            
+            if (phone && !phoneRegex.test(phone)) {
+                alert('Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9');
+                e.target.focus();
+            }
+        });
+        
+        // Form submission - Static site compatible
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const phone = phoneInput.value;
+            const phoneRegex = /^[6-9]\d{9}$/;
+            
+            if (phone && !phoneRegex.test(phone)) {
+                alert('Please enter a valid 10-digit Indian mobile number');
+                phoneInput.focus();
+                return;
+            }
+            
+            // Get form data
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: phone,
+                address: document.getElementById('address').value,
+                quantity: document.getElementById('quantity').value
+            };
+            
+            // Validate all fields
+            for (let key in formData) {
+                if (!formData[key]) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+            }
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission (for static site)
+            setTimeout(() => {
+                // Generate order ID
+                const orderId = 'TOHFA' + Date.now() + Math.floor(Math.random() * 1000);
+                
+                // Show success message
+                alert(`Thank you for your order! Your Order ID is: ${orderId}\n\nWe will contact you soon to confirm your order details.\n\nPlease also contact us directly at:\nPhone: +91 9545959797\nWhatsApp: +91 9545959797\nEmail: mubashir9823king@gmail.com`);
+                
+                // Reset form
+                orderForm.reset();
+                
+                // Reset button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1000);
+        });
+
+        // Premium loading animation - Optimized for mobile
+        window.addEventListener('load', function() {
+            // Only show loading animation on desktop
+            if (window.innerWidth >= 768) {
+                document.body.style.opacity = '0';
+                document.body.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    document.body.style.opacity = '1';
+                }, 50);
+            }
+        });
+
+        // Enhanced hover effects for premium cards - Only on desktop
+        if (window.innerWidth >= 768) {
+            document.querySelectorAll('.premium-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Gallery hover effects - Only on desktop
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.03)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        }
+
+        // Language toggle function
+        function toggleLanguage() {
+            const body = document.body;
+            const isEnglish = body.classList.contains('lang-english');
+            
+            if (isEnglish) {
+                body.classList.remove('lang-english');
+                body.setAttribute('dir', 'rtl');
+                body.setAttribute('lang', 'ur');
+            } else {
+                body.classList.add('lang-english');
+                body.setAttribute('dir', 'ltr');
+                body.setAttribute('lang', 'en');
+            }
+        }
+
+        // Check for saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang === 'english') {
+                document.body.classList.add('lang-english');
+                document.body.setAttribute('dir', 'ltr');
+                document.body.setAttribute('lang', 'en');
+            }
+            
+            // Mobile performance optimizations
+            if (window.innerWidth <= 768) {
+                // Disable heavy animations on mobile
+                document.body.classList.add('mobile-optimized');
+                
+                // Optimize images for mobile
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                });
+                
+                // Reduce scroll complexity on mobile
+                let ticking = false;
+                function updateOnScroll() {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            // Minimal scroll updates for mobile
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }
+                
+                window.addEventListener('scroll', updateOnScroll, { passive: true });
+            }
+        });
+        
+        // Performance optimization for mobile devices
+        if ('serviceWorker' in navigator && window.innerWidth <= 768) {
+            // Add passive event listeners for better mobile performance
+            document.addEventListener('touchstart', function() {}, { passive: true });
+            document.addEventListener('touchmove', function() {}, { passive: true });
+            document.addEventListener('wheel', function() {}, { passive: true });
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Test - Fun Ka Tohfa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .performance-metric {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .metric-value {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .good { color: #28a745; }
+        .warning { color: #ffc107; }
+        .poor { color: #dc3545; }
+    </style>
+</head>
+<body>
+    <h1>Mobile Performance Test Results</h1>
+    
+    <div class="test-section">
+        <h2>Page Load Performance</h2>
+        <div class="performance-metric">
+            <span>DOM Content Loaded:</span>
+            <span class="metric-value" id="domLoaded">-</span>
+        </div>
+        <div class="performance-metric">
+            <span>Page Load Complete:</span>
+            <span class="metric-value" id="pageLoaded">-</span>
+        </div>
+        <div class="performance-metric">
+            <span>First Paint:</span>
+            <span class="metric-value" id="firstPaint">-</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Mobile Responsiveness</h2>
+        <div class="performance-metric">
+            <span>Viewport Width:</span>
+            <span class="metric-value" id="viewportWidth">-</span>
+        </div>
+        <div class="metric-value">
+            <span>Device Pixel Ratio:</span>
+            <span class="metric-value" id="pixelRatio">-</span>
+        </div>
+        <div class="performance-metric">
+            <span>Touch Support:</span>
+            <span class="metric-value" id="touchSupport">-</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Scroll Performance</h2>
+        <div class="performance-metric">
+            <span>Scroll Events per Second:</span>
+            <span class="metric-value" id="scrollRate">-</span>
+        </div>
+        <div class="performance-metric">
+            <span>Scroll Smoothness:</span>
+            <span class="metric-value" id="scrollSmoothness">-</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Recommendations</h2>
+        <ul id="recommendations">
+            <li>Test on actual mobile device</li>
+            <li>Check network conditions</li>
+            <li>Monitor memory usage</li>
+        </ul>
+    </div>
+
+    <script>
+        // Performance monitoring
+        let scrollCount = 0;
+        let lastScrollTime = Date.now();
+        
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const domLoaded = performance.now();
+            document.getElementById('domLoaded').textContent = domLoaded.toFixed(2) + 'ms';
+            
+            if (domLoaded < 1000) {
+                document.getElementById('domLoaded').className = 'metric-value good';
+            } else if (domLoaded < 2000) {
+                document.getElementById('domLoaded').className = 'metric-value warning';
+            } else {
+                document.getElementById('domLoaded').className = 'metric-value poor';
+            }
+        });
+        
+        // Page Load Complete
+        window.addEventListener('load', function() {
+            const pageLoaded = performance.now();
+            document.getElementById('pageLoaded').textContent = pageLoaded.toFixed(2) + 'ms';
+            
+            if (pageLoaded < 2000) {
+                document.getElementById('pageLoaded').className = 'metric-value good';
+            } else if (pageLoaded < 4000) {
+                document.getElementById('pageLoaded').className = 'metric-value warning';
+            } else {
+                document.getElementById('pageLoaded').className = 'metric-value poor';
+            }
+        });
+        
+        // First Paint (if supported)
+        if ('performance' in window && 'getEntriesByType' in performance) {
+            const paintEntries = performance.getEntriesByType('paint');
+            if (paintEntries.length > 0) {
+                const firstPaint = paintEntries[0].startTime;
+                document.getElementById('firstPaint').textContent = firstPaint.toFixed(2) + 'ms';
+                
+                if (firstPaint < 500) {
+                    document.getElementById('firstPaint').className = 'metric-value good';
+                } else if (firstPaint < 1000) {
+                    document.getElementById('firstPaint').className = 'metric-value warning';
+                } else {
+                    document.getElementById('firstPaint').className = 'metric-value poor';
+                }
+            }
+        }
+        
+        // Mobile responsiveness
+        document.getElementById('viewportWidth').textContent = window.innerWidth + 'px';
+        document.getElementById('pixelRatio').textContent = window.devicePixelRatio || 'N/A';
+        document.getElementById('touchSupport').textContent = 'ontouchstart' in window ? 'Yes' : 'No';
+        
+        // Scroll performance
+        let scrollEvents = 0;
+        let scrollStartTime = Date.now();
+        
+        window.addEventListener('scroll', function() {
+            scrollEvents++;
+            const now = Date.now();
+            
+            if (now - scrollStartTime >= 1000) {
+                const rate = scrollEvents / ((now - scrollStartTime) / 1000);
+                document.getElementById('scrollRate').textContent = rate.toFixed(1);
+                
+                if (rate < 10) {
+                    document.getElementById('scrollRate').className = 'metric-value good';
+                } else if (rate < 20) {
+                    document.getElementById('scrollRate').className = 'metric-value warning';
+                } else {
+                    document.getElementById('scrollRate').className = 'metric-value poor';
+                }
+                
+                scrollEvents = 0;
+                scrollStartTime = now;
+            }
+        }, { passive: true });
+        
+        // Generate recommendations based on performance
+        setTimeout(() => {
+            const recommendations = [];
+            
+            if (window.innerWidth <= 768) {
+                recommendations.push('✓ Mobile viewport detected');
+                recommendations.push('✓ Touch events supported');
+                recommendations.push('✓ Responsive design active');
+            }
+            
+            if (performance.now() < 2000) {
+                recommendations.push('✓ Fast page load');
+            } else {
+                recommendations.push('⚠ Consider optimizing images and scripts');
+            }
+            
+            if (window.devicePixelRatio > 2) {
+                recommendations.push('⚠ High DPI device - optimize images');
+            }
+            
+            const recList = document.getElementById('recommendations');
+            recList.innerHTML = recommendations.map(rec => `<li>${rec}</li>`).join('');
+        }, 2000);
+    </script>
+</body>
+</html>

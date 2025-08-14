@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Fun Ka Tohfa Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --terracotta: #D97742;
+            --coral: #FF6F61;
+            --cream-primary: #FFF9F0;
+            --charcoal: #333333;
+        }
+        
+        body {
+            background: var(--cream-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Simplified cursor for mobile performance */
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Allow text selection on interactive elements */
+        .btn, .btn-refresh, .btn-logout, .form-control, textarea, input, a, button, .form-check-input {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+            cursor: pointer;
+        }
+
+        /* Custom cursor for interactive elements */
+        .btn:hover, .btn-refresh:hover, .btn-logout:hover, a:hover, button:hover {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" fill="%23D97742" opacity="0.9"/><circle cx="16" cy="16" r="8" fill="%23FF6F61"/><circle cx="16" cy="16" r="4" fill="%23FFF9F0"/></svg>') 16 16, pointer;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--coral) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .orders-table {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .table thead th {
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-weight: 600;
+        }
+        
+        .table tbody td {
+            padding: 1rem;
+            vertical-align: middle;
+            border-color: #f0f0f0;
+        }
+        
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            
+            .admin-header {
+                padding: 1.5rem 0;
+                margin-bottom: 1.5rem;
+            }
+            
+            .orders-table {
+                font-size: 13px;
+            }
+            
+            .table thead th,
+            .table tbody td {
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .btn-refresh, .btn-logout {
+                padding: 0.5rem 1rem;
+                font-size: 14px;
+                min-height: 44px;
+            }
+            
+            /* Optimize table for mobile */
+            .table-responsive {
+                border: none;
+            }
+            
+            /* Reduce shadow complexity on mobile */
+            .orders-table {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .admin-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .table thead th,
+            .table tbody td {
+                padding: 0.5rem 0.25rem;
+                font-size: 12px;
+            }
+            
+            .status-badge {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+        
+        .btn-refresh {
+            background: var(--terracotta);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-refresh:hover {
+            background: var(--coral);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .stats-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--terracotta);
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--terracotta);
+        }
+        
+        .stats-label {
+            color: var(--charcoal);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Admin login overlay */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.35);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 1rem;
+        }
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 420px;
+            border-left: 4px solid var(--terracotta);
+        }
+        .login-card .card-header {
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--coral) 100%);
+            color: white;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            padding: 1rem 1.25rem;
+        }
+        .login-card .card-body {
+            padding: 1.25rem;
+        }
+        .btn-logout {
+            background: #6c757d;
+            border: none;
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-card">
+            <div class="card-header d-flex align-items-center">
+                <i class="fas fa-lock me-2"></i>
+                <strong>Admin Login</strong>
+            </div>
+            <div class="card-body">
+                <form onsubmit="handleLogin(event)">
+                    <div class="mb-3">
+                        <label for="adminPassword" class="form-label">Enter Password</label>
+                        <input type="password" class="form-control" id="adminPassword" placeholder="Password" required />
+                        <div id="loginError" class="text-danger small mt-2" style="display:none;">Incorrect password. Please try again.</div>
+                    </div>
+                    <button type="submit" class="btn btn-refresh w-100"><i class="fas fa-sign-in-alt me-2"></i>Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="admin-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1><i class="fas fa-book-open me-3"></i>Fun Ka Tohfa - Admin Panel</h1>
+                    <p class="mb-0">Manage and view all book orders</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-refresh" onclick="refreshOrders()">
+                        <i class="fas fa-sync-alt me-2"></i>Refresh Orders
+                    </button>
+                    <button class="btn btn-logout ms-2" onclick="logoutAdmin()">
+                        <i class="fas fa-sign-out-alt me-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="stats-card text-center">
+                    <div class="stats-number" id="totalOrders">0</div>
+                    <div class="stats-label">Total Orders</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card text-center">
+                    <div class="stats-number" id="totalQuantity">0</div>
+                    <div class="stats-label">Total Books</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card text-center">
+                    <div class="stats-number" id="pendingOrders">0</div>
+                    <div class="stats-label">Pending Orders</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card text-center">
+                    <div class="stats-number" id="todayOrders">0</div>
+                    <div class="stats-label">Today's Orders</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="orders-table">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th class="nowrap">Date & Time</th>
+                            <th>Customer Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                            <th>Completed</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <tr>
+                            <td colspan="10" class="text-center text-muted py-5">
+                                <i class="fas fa-spinner fa-spin me-2"></i>Loading orders...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load orders when page loads (only after auth)
+        document.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('adminAuth') === '1') {
+                hideLoginOverlay();
+                loadOrders();
+            } else {
+                showLoginOverlay();
+            }
+        });
+
+        // Function to load orders
+        async function loadOrders() {
+            try {
+                const response = await fetch('api/get_orders.php');
+                const data = await response.json();
+                
+                if (data.success === false) {
+                    throw new Error(data.message);
+                }
+                
+                displayOrders(data.orders);
+                updateStats(data.orders);
+                
+            } catch (error) {
+                console.error('Error loading orders:', error);
+                document.getElementById('ordersTableBody').innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center text-danger py-5">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Failed to load orders: ${error.message}
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // Function to display orders in table
+        function displayOrders(orders) {
+            const tbody = document.getElementById('ordersTableBody');
+            
+            if (orders.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                            <td colspan="10" class="text-center text-muted py-5">
+                            <i class="fas fa-inbox me-2"></i>No orders found
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = orders.map(order => `
+                <tr data-order-id="${order.orderId}">
+                    <td><strong>${order.orderId}</strong></td>
+                    <td class="nowrap"><span title="${order.dateTime}">${formatDateTime12(order.dateTime)}</span></td>
+                    <td>${order.fullName}</td>
+                    <td>${order.email}</td>
+                    <td>${order.phone}</td>
+                    <td>${order.address}</td>
+                    <td><span class="badge bg-primary">${order.quantity}</span></td>
+                    <td>
+                        <span class="status-badge ${order.status === 'Completed' ? 'status-completed' : 'status-pending'}">${order.status}</span>
+                    </td>
+                    <td>
+                        <input type="checkbox" class="form-check-input" ${order.status === 'Completed' ? 'checked' : ''} onchange="toggleCompleted('${order.orderId}', this)" />
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteOrder('${order.orderId}', this)"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Function to update statistics
+        function updateStats(orders) {
+            const totalOrders = orders.length;
+            const totalQuantity = orders.reduce((sum, order) => sum + order.quantity, 0);
+            const pendingOrders = orders.filter(order => order.status === 'Pending').length;
+            
+            // Count today's orders
+            const today = new Date().toDateString();
+            const todayOrders = orders.filter(order => {
+                const orderDate = new Date(order.dateTime).toDateString();
+                return orderDate === today;
+            }).length;
+            
+            document.getElementById('totalOrders').textContent = totalOrders;
+            document.getElementById('totalQuantity').textContent = totalQuantity;
+            document.getElementById('pendingOrders').textContent = pendingOrders;
+            document.getElementById('todayOrders').textContent = todayOrders;
+        }
+
+        // Format date-time to 12-hour format
+        function formatDateTime12(dateTimeStr) {
+            try {
+                let dateObj;
+                if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(dateTimeStr)) {
+                    const [datePart, timePart] = dateTimeStr.split(' ');
+                    const [y, m, d] = datePart.split('-').map(Number);
+                    const [hh, mm, ss] = timePart.split(':').map(Number);
+                    dateObj = new Date(y, m - 1, d, hh, mm, ss);
+                } else {
+                    dateObj = new Date(dateTimeStr);
+                }
+                if (isNaN(dateObj.getTime())) return dateTimeStr;
+                const datePart = dateObj.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' });
+                const timePart = dateObj.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', hour12: true });
+                return `${datePart}, ${timePart}`;
+            } catch (e) {
+                return dateTimeStr;
+            }
+        }
+
+        // Function to refresh orders
+        function refreshOrders() {
+            if (sessionStorage.getItem('adminAuth') !== '1') {
+                showLoginOverlay();
+                return;
+            }
+            const refreshBtn = document.querySelector('.btn-refresh');
+            const originalText = refreshBtn.innerHTML;
+            
+            refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Refreshing...';
+            refreshBtn.disabled = true;
+            
+            loadOrders().finally(() => {
+                refreshBtn.innerHTML = originalText;
+                refreshBtn.disabled = false;
+            });
+        }
+
+        // Auto-refresh every 30 seconds (only when authenticated)
+        setInterval(function() {
+            if (sessionStorage.getItem('adminAuth') === '1') {
+                loadOrders();
+            }
+        }, 30000);
+
+        // Login helpers
+        function showLoginOverlay() {
+            const overlay = document.getElementById('loginOverlay');
+            if (overlay) overlay.style.display = 'flex';
+        }
+        function hideLoginOverlay() {
+            const overlay = document.getElementById('loginOverlay');
+            if (overlay) overlay.style.display = 'none';
+        }
+        function handleLogin(e) {
+            e.preventDefault();
+            const input = document.getElementById('adminPassword');
+            const error = document.getElementById('loginError');
+            const password = (input?.value || '').trim();
+            if (password === 'Mubashir0723') {
+                sessionStorage.setItem('adminAuth', '1');
+                if (error) error.style.display = 'none';
+                hideLoginOverlay();
+                loadOrders();
+            } else {
+                if (error) error.style.display = 'block';
+            }
+        }
+        function logoutAdmin() {
+            sessionStorage.removeItem('adminAuth');
+            showLoginOverlay();
+        }
+
+        // Toggle completed status
+        async function toggleCompleted(orderId, checkboxEl) {
+            try {
+                checkboxEl.disabled = true;
+                const newStatus = checkboxEl.checked ? 'Completed' : 'Pending';
+                const res = await fetch('api/update_order_status.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orderId, status: newStatus })
+                });
+                const data = await res.json();
+                if (!res.ok || data.success === false) {
+                    throw new Error(data.message || 'Failed to update status');
+                }
+                await loadOrders();
+            } catch (err) {
+                alert('Error: ' + err.message);
+                checkboxEl.checked = !checkboxEl.checked;
+            } finally {
+                checkboxEl.disabled = false;
+            }
+        }
+
+        // Delete order
+        async function deleteOrder(orderId, btnEl) {
+            if (!confirm('Are you sure you want to delete order ' + orderId + '?')) {
+                return;
+            }
+            try {
+                btnEl.disabled = true;
+                btnEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                const res = await fetch('api/delete_order.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orderId })
+                });
+                const data = await res.json();
+                if (!res.ok || data.success === false) {
+                    throw new Error(data.message || 'Failed to delete order');
+                }
+                await loadOrders();
+            } catch (err) {
+                alert('Error: ' + err.message);
+            } finally {
+                btnEl.disabled = false;
+                btnEl.innerHTML = '<i class="fas fa-trash"></i>';
+            }
+        }
+    </script>
+</body>
+</html>
